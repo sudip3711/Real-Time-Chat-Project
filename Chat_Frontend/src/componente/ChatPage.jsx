@@ -56,7 +56,8 @@ function ChatPage() {
     const connectWebSocket = () => {
       //SockJS
       const protocol = window.location.protocol === 'https:' ? 'https://' : 'http://';
-      const sock = new SockJS(`${baseURL}/chat`);
+      // const sock = new SockJS(`${baseURL}/chat`);
+      const sock = new SockJS(`${protocol}${baseURL.replace(/^https?:\/\//, '')}/chat`);
       const client = Stomp.over(sock);
       client.connect({}, () => {
         setStompClient(client);
