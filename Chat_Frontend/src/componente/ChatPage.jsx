@@ -55,6 +55,7 @@ function ChatPage() {
   useEffect(() => {
     const connectWebSocket = () => {
       //SockJS
+      const protocol = window.location.protocol === 'https:' ? 'https://' : 'http://';
       const sock = new SockJS(`${baseURL}/chat`);
       const client = Stomp.over(sock);
       client.connect({}, () => {
