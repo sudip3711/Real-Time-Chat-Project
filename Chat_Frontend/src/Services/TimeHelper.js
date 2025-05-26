@@ -1,8 +1,9 @@
-export function timeAgo(date) {
-    const now = new Date();
+export function timeAgoIST(date) {
   const past = new Date(date);
-  const secondsAgo = Math.floor((now - past) / 1000);
+  const istDate = new Date(past.toLocaleString("en-US", { timeZone: "Asia/Kolkata" }));
+  const now = new Date(new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" }));
 
+  const secondsAgo = Math.floor((now - istDate) / 1000);
   if (secondsAgo < 60) return `${secondsAgo} seconds ago`;
   const minutesAgo = Math.floor(secondsAgo / 60);
   if (minutesAgo < 60) return `${minutesAgo} minutes ago`;
@@ -15,6 +16,3 @@ export function timeAgo(date) {
   const yearsAgo = Math.floor(monthsAgo / 12);
   return `${yearsAgo} years ago`;
 }
-
-// Example usage:
-console.log(timeAgo("2024-01-29T14:30:00Z")); // Example timestamp
