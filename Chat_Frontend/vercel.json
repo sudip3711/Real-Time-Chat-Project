@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/chat",
+      "destination": "https://your-backend-domain.com/chat"
+    }
+  ]
+}
